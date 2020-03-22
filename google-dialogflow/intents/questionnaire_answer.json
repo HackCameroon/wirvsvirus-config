@@ -1,0 +1,46 @@
+{
+  "id": "aab41a14-655d-42fe-a653-c12d23fe50c6",
+  "name": "questionnaire_answer",
+  "auto": true,
+  "contexts": [
+    "questionnaire_answer"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "6c1fbed9-812e-47df-b9da-cfe59de64169",
+          "required": false,
+          "dataType": "@janein",
+          "name": "janein",
+          "value": "$janein",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "de",
+          "condition": "",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

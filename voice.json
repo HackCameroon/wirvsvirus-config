@@ -1,0 +1,328 @@
+{
+    "description": "VoiceBot_Corona",
+    "states": [
+      {
+        "name": "Trigger",
+        "type": "InitialState",
+        "properties": {
+          "offset": {
+            "x": -30,
+            "y": -430
+          },
+          "flow_url": "https://webhooks.twilio.com/v1/Accounts/AC3091cc52064ab99745422b17fc69d707/Flows/FW06b30259ee4c9076cd45d7e7620becd1"
+        },
+        "transitions": [
+          {
+            "event": "incomingMessage",
+            "conditions": [],
+            "next": null,
+            "uuid": "d023c1f5-ee7d-40ab-aff1-21f9a8497397"
+          },
+          {
+            "event": "incomingCall",
+            "conditions": [],
+            "next": "FF3bb2b4336bdd7ab15a5fb578ea5b037d",
+            "uuid": "8f245f71-9012-4444-a837-289e38dc1d4f"
+          },
+          {
+            "event": "incomingRequest",
+            "conditions": [],
+            "next": null,
+            "uuid": "bb20a141-be6d-4099-b20c-eddc535bc054"
+          }
+        ],
+        "sid": "FF1d4840ecfac4da47ca431ed4bfc9aed4"
+      },
+      {
+        "name": "SendCallToAgent",
+        "type": "SendToFlex",
+        "properties": {
+          "offset": {
+            "x": 620,
+            "y": 1980
+          },
+          "workflow": "WW93afabb5b071578094989453eb40b476",
+          "channel": "TCaf1b530a445b8a65bbc61e8b33840376",
+          "attributes": "{ \"type\": \"inbound\", \"name\": \"{{trigger.call.From}}\" , \"skill\": \"Nespresso\", \"sfdcObjectId\":\"{{widgets.Getsfdcinfo.parsed.contactId}} \", \"session\":\"{{trigger.call.CallSid}}\"}",
+          "timeout": null,
+          "priority": null,
+          "waitUrl": null,
+          "waitUrlMethod": null
+        },
+        "transitions": [
+          {
+            "event": "callComplete",
+            "conditions": [],
+            "next": null,
+            "uuid": "b91541d5-9c6b-495a-81a2-33afab058efb"
+          },
+          {
+            "event": "failedToEnqueue",
+            "conditions": [],
+            "next": null,
+            "uuid": "6805a64c-856f-4dfc-9c20-d0dcb6ecc086"
+          },
+          {
+            "event": "callFailure",
+            "conditions": [],
+            "next": null,
+            "uuid": "78f7f25a-13e3-4394-adb4-4e92608fe340"
+          }
+        ],
+        "sid": "FF57cb7c97290a2d952d8d7b3146e1dc1a"
+      },
+      {
+        "name": "gather_1",
+        "type": "Gather",
+        "properties": {
+          "offset": {
+            "x": -10,
+            "y": 370
+          },
+          "timeout": 10,
+          "finish_on_key": "#",
+          "stop_gather": true,
+          "number_of_digits": null,
+          "save_response_as": null,
+          "say": null,
+          "play": null,
+          "voice": "Polly.Marlene",
+          "language": "de-DE",
+          "loop": 1,
+          "hints": null,
+          "gather_language": "de-DE",
+          "speech_timeout": "1",
+          "speech_model": "phone_call",
+          "profanity_filter": "true"
+        },
+        "transitions": [
+          {
+            "event": "keypress",
+            "conditions": [],
+            "next": null,
+            "uuid": "b5f611a5-2a9c-4061-b042-b635bf5ad699"
+          },
+          {
+            "event": "speech",
+            "conditions": [],
+            "next": "FFa9bb27ebc408bb646a59d41929235bb8",
+            "uuid": "bdd851dc-9a10-44b9-988e-dd4549249fc4"
+          },
+          {
+            "event": "timeout",
+            "conditions": [],
+            "next": "FFa229e10cf5090cc2e0a0dfe67555499d",
+            "uuid": "9794e0ff-7ab4-4db9-ace9-f19084f6775a"
+          }
+        ],
+        "sid": "FFdee245dba72aee2c7c863e6147a41828"
+      },
+      {
+        "name": "http_1",
+        "type": "Webhook",
+        "properties": {
+          "offset": {
+            "x": 30,
+            "y": 680
+          },
+          "method": "POST",
+          "url": "https://twlo-andrej-4k.eu.ngrok.io/bot/getAnswer",
+          "body": "{\"question\":\"{{widgets.gather_1.SpeechResult}} \", \"sessionSid\":\" {{trigger.call.CallSid}} \"}",
+          "timeout": null,
+          "parameters": null,
+          "save_response_as": null,
+          "content_type": "application/json;charset=utf-8"
+        },
+        "transitions": [
+          {
+            "event": "success",
+            "conditions": [],
+            "next": "FF13d433c54355bcb6a0bab7524fdd44db",
+            "uuid": "ee85e381-5233-4584-a4ca-9c434be833bd"
+          },
+          {
+            "event": "failed",
+            "conditions": [],
+            "next": null,
+            "uuid": "2eb8d83d-9877-49d2-9895-fd7f00f8d347"
+          }
+        ],
+        "sid": "FFa9bb27ebc408bb646a59d41929235bb8"
+      },
+      {
+        "name": "say_play_1",
+        "type": "SayPlay",
+        "properties": {
+          "offset": {
+            "x": 10,
+            "y": 1010
+          },
+          "say": "{{widgets.http_1.parsed.response}}",
+          "play": null,
+          "voice": "Polly.Vicki",
+          "language": "de-DE",
+          "loop": 1,
+          "digits": null
+        },
+        "transitions": [
+          {
+            "event": "audioComplete",
+            "conditions": [],
+            "next": "FFefcc208ab2a66a483f974697d109ceae",
+            "uuid": "5957ddae-9b6c-4786-b9b6-ca79794ff5ad"
+          }
+        ],
+        "sid": "FF13d433c54355bcb6a0bab7524fdd44db"
+      },
+      {
+        "name": "split_1",
+        "type": "Branch",
+        "properties": {
+          "offset": {
+            "x": -520,
+            "y": 1410
+          },
+          "input": "{{widgets.http_1.parsed.endConversation}}"
+        },
+        "transitions": [
+          {
+            "event": "noMatch",
+            "conditions": [],
+            "next": "FFdee245dba72aee2c7c863e6147a41828",
+            "uuid": "bda4edec-0275-43c7-9755-3497bbd23a54"
+          },
+          {
+            "event": "match",
+            "conditions": [
+              {
+                "friendly_name": "If value equal_to false",
+                "type": "equal_to",
+                "arguments": [
+                  "{{widgets.http_1.parsed.endConversation}}"
+                ],
+                "value": "false"
+              }
+            ],
+            "next": "FFdee245dba72aee2c7c863e6147a41828",
+            "uuid": "3bc79af6-24a7-4080-ab2e-82d7486a3e51"
+          },
+          {
+            "event": "match",
+            "conditions": [
+              {
+                "friendly_name": "If value equal_to true",
+                "type": "equal_to",
+                "arguments": [
+                  "{{widgets.http_1.parsed.endConversation}}"
+                ],
+                "value": "true"
+              }
+            ],
+            "next": "FFefcc208ab2a66a483f974697d109ceae",
+            "uuid": "ba7b38e1-3029-409a-abdc-c945cbc1ec5d"
+          }
+        ],
+        "sid": "FF874d05241ee2c9dba7f632c0ded9fdc5"
+      },
+      {
+        "name": "say_play_2",
+        "type": "SayPlay",
+        "properties": {
+          "offset": {
+            "x": -20,
+            "y": 70
+          },
+          "say": "Willkommen bei der Corona-Hilfe. Ich kann Ihnen bei generellen Informationen zum neuartigen Coronavirus helfen oder Sie beraten, wenn Sie den Verdacht auf eine Infektion haben. Was kann ich für Sie tun?",
+          "play": null,
+          "voice": "Polly.Vicki",
+          "language": "de-DE",
+          "loop": 1,
+          "digits": null
+        },
+        "transitions": [
+          {
+            "event": "audioComplete",
+            "conditions": [],
+            "next": "FFdee245dba72aee2c7c863e6147a41828",
+            "uuid": "e23479da-e1f1-4384-88af-7612afacd64e"
+          }
+        ],
+        "sid": "FF3bb2b4336bdd7ab15a5fb578ea5b037d"
+      },
+      {
+        "name": "Copy_of_split_1",
+        "type": "Branch",
+        "properties": {
+          "offset": {
+            "x": 850,
+            "y": 920
+          },
+          "input": "{{widgets.http_1.parsed.escalateAgent}}"
+        },
+        "transitions": [
+          {
+            "event": "noMatch",
+            "conditions": [],
+            "next": "FFdee245dba72aee2c7c863e6147a41828",
+            "uuid": "1f54c49d-7415-4db8-bc2d-311ae96faae7"
+          },
+          {
+            "event": "match",
+            "conditions": [
+              {
+                "friendly_name": "If value equal_to false",
+                "type": "equal_to",
+                "arguments": [
+                  "{{widgets.http_1.parsed.escalateAgent}}"
+                ],
+                "value": "false"
+              }
+            ],
+            "next": "FFdee245dba72aee2c7c863e6147a41828",
+            "uuid": "78c35f93-67e2-44fb-a244-97cc1112284e"
+          },
+          {
+            "event": "match",
+            "conditions": [
+              {
+                "friendly_name": "If value equal_to true",
+                "type": "equal_to",
+                "arguments": [
+                  "{{widgets.http_1.parsed.escalateAgent}}"
+                ],
+                "value": "true"
+              }
+            ],
+            "next": "FF57cb7c97290a2d952d8d7b3146e1dc1a",
+            "uuid": "a7043c07-d4c3-4113-95c9-6e56e2c59b01"
+          }
+        ],
+        "sid": "FFefcc208ab2a66a483f974697d109ceae"
+      },
+      {
+        "name": "say_play_3",
+        "type": "SayPlay",
+        "properties": {
+          "offset": {
+            "x": 850,
+            "y": 480
+          },
+          "say": "Ich habe Sie nicht verstanden, können Sie das noch einmal wiederholen?",
+          "play": null,
+          "voice": "Polly.Marlene",
+          "language": "de-DE",
+          "loop": 1,
+          "digits": null
+        },
+        "transitions": [
+          {
+            "event": "audioComplete",
+            "conditions": [],
+            "next": "FFdee245dba72aee2c7c863e6147a41828",
+            "uuid": "4331d803-25bc-40a4-8039-7f8a25e46c27"
+          }
+        ],
+        "sid": "FFa229e10cf5090cc2e0a0dfe67555499d"
+      }
+    ]
+  }

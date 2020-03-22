@@ -1,0 +1,143 @@
+[
+  {
+    "id": "7461f0c8-980d-42fc-9ca9-43a831d07282",
+    "data": [
+      {
+        "text": "Ich habe Gliederschmerzen",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "8c5fc3cc-920f-45f0-9e05-55973b8c56d1",
+    "data": [
+      {
+        "text": "Ich habe ",
+        "userDefined": false
+      },
+      {
+        "text": "Fieber",
+        "alias": "last-name",
+        "meta": "@sys.last-name",
+        "userDefined": false
+      },
+      {
+        "text": " und Kopfschmerzen",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "6ce420d2-138e-4f8c-9b71-590bfdef1924",
+    "data": [
+      {
+        "text": "Ich habe ",
+        "userDefined": false
+      },
+      {
+        "text": "ein",
+        "alias": "number",
+        "meta": "@sys.number",
+        "userDefined": false
+      },
+      {
+        "text": " Kratzen im ",
+        "userDefined": false
+      },
+      {
+        "text": "Hals",
+        "alias": "person",
+        "meta": "@sys.person",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "98129daf-dcce-4ed1-a916-2f6dffb61fa2",
+    "data": [
+      {
+        "text": "Ich habe ",
+        "userDefined": false
+      },
+      {
+        "text": "Husten",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "42c026bd-c258-40f4-9ab3-bc5a7fcec405",
+    "data": [
+      {
+        "text": "Ich hatte Kontakt mit ",
+        "userDefined": false
+      },
+      {
+        "text": "einem",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      },
+      {
+        "text": " Infizierten",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "301d6e2e-1fde-497d-8d9a-620385d28516",
+    "data": [
+      {
+        "text": "Ich glaube, ich habe den Virus",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "7816b7b9-3188-404b-9384-73641d742afe",
+    "data": [
+      {
+        "text": "Ich habe ",
+        "userDefined": false
+      },
+      {
+        "text": "Fieber",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "1e4c79e7-78e9-4a90-80da-112fc6fd4dd6",
+    "data": [
+      {
+        "text": "Ich fühle mich krank",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]

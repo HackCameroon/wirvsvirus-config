@@ -1,0 +1,174 @@
+{
+    "description": "WhatsApp_Corona",
+    "states": [
+      {
+        "name": "Trigger",
+        "type": "InitialState",
+        "properties": {
+          "offset": {
+            "x": 0,
+            "y": 0
+          },
+          "flow_url": "https://webhooks.twilio.com/v1/Accounts/AC3091cc52064ab99745422b17fc69d707/Flows/FW48daf9bc92aac433eb0fd0d65fbb8272"
+        },
+        "transitions": [
+          {
+            "event": "incomingMessage",
+            "conditions": [],
+            "next": "FF6dd7d4cb461eefe46c1968cbb6679928",
+            "uuid": "f12c7d73-ec5c-4b65-9171-6f8efe404983"
+          },
+          {
+            "event": "incomingCall",
+            "conditions": [],
+            "next": null,
+            "uuid": "2162e55a-8a23-421c-8aaf-4905fd14eeeb"
+          },
+          {
+            "event": "incomingRequest",
+            "conditions": [],
+            "next": null,
+            "uuid": "f27a7577-62a1-4b99-88ca-e201186928c5"
+          }
+        ],
+        "sid": "FF6b205d2ae129e35497006702bc22a52c"
+      },
+      {
+        "name": "send_to_flex_1",
+        "type": "SendToFlex",
+        "properties": {
+          "offset": {
+            "x": 140,
+            "y": 980
+          },
+          "workflow": "WW93afabb5b071578094989453eb40b476",
+          "channel": "TC6e25d41dfe25cd97a7e25da2f5b6a61c",
+          "attributes": "{\"name\": \"{{trigger.message.ChannelAttributes.from}}\", \"channelType\": \"{{trigger.message.ChannelAttributes.channel_type}}\", \"channelSid\": \"{{trigger.message.ChannelSid}}\" , \"session\": \"{{trigger.message.ChannelSid}} \"}",
+          "timeout": null,
+          "priority": null,
+          "waitUrl": null,
+          "waitUrlMethod": null
+        },
+        "transitions": [
+          {
+            "event": "callComplete",
+            "conditions": [],
+            "next": null,
+            "uuid": "c622c897-5476-498b-9028-ddb05b087328"
+          },
+          {
+            "event": "failedToEnqueue",
+            "conditions": [],
+            "next": null,
+            "uuid": "cb2903ff-08bc-406f-899d-de9e210281f5"
+          },
+          {
+            "event": "callFailure",
+            "conditions": [],
+            "next": null,
+            "uuid": "b7185b70-ecec-43bb-b3dc-593761a8a24e"
+          }
+        ],
+        "sid": "FF42136dd960d199ac475c70cf3a7c7f1d"
+      },
+      {
+        "name": "http_1",
+        "type": "Webhook",
+        "properties": {
+          "offset": {
+            "x": -420,
+            "y": 340
+          },
+          "method": "POST",
+          "url": "https://twlo-andrej-4k.eu.ngrok.io/bot/getAnswer",
+          "body": "{\"question\":\"{{trigger.message.Body}} \", \"sessionSid\":\"{{trigger.message.ChannelSid}}\"}",
+          "timeout": null,
+          "parameters": null,
+          "save_response_as": null,
+          "content_type": "application/json;charset=utf-8"
+        },
+        "transitions": [
+          {
+            "event": "success",
+            "conditions": [],
+            "next": "FFfc6df51584748b11c837fe89a90817fc",
+            "uuid": "e64eb628-f168-4f4f-afba-cdcb24a8254f"
+          },
+          {
+            "event": "failed",
+            "conditions": [],
+            "next": null,
+            "uuid": "59c7ddc6-e29c-43d2-8e27-be360508efd8"
+          }
+        ],
+        "sid": "FF6dd7d4cb461eefe46c1968cbb6679928"
+      },
+      {
+        "name": "send_message_2",
+        "type": "Message",
+        "properties": {
+          "offset": {
+            "x": -480,
+            "y": 660
+          },
+          "body": "{{widgets.http_1.parsed.response}}",
+          "from": "{{flow.channel.address}}",
+          "to": "{{contact.channel.address}}",
+          "media_url": null,
+          "service": "{{trigger.message.InstanceSid}}",
+          "channel": "{{trigger.message.ChannelSid}}",
+          "attributes": null
+        },
+        "transitions": [
+          {
+            "event": "sent",
+            "conditions": [],
+            "next": "FF8f3e0dd51577c85fc05a20594b1d6c6f",
+            "uuid": "090f5a02-6873-47a7-b1dc-036e98a095d5"
+          },
+          {
+            "event": "failed",
+            "conditions": [],
+            "next": null,
+            "uuid": "60c781af-7054-4417-8b2e-2690672a38a3"
+          }
+        ],
+        "sid": "FFfc6df51584748b11c837fe89a90817fc"
+      },
+      {
+        "name": "split_1",
+        "type": "Branch",
+        "properties": {
+          "offset": {
+            "x": -510,
+            "y": 930
+          },
+          "input": "{{widgets.http_1.parsed.escalateAgent}}"
+        },
+        "transitions": [
+          {
+            "event": "noMatch",
+            "conditions": [],
+            "next": null,
+            "uuid": "3533ee0b-9a0b-433e-8119-36ade072844d"
+          },
+          {
+            "event": "match",
+            "conditions": [
+              {
+                "friendly_name": "If value equal_to true",
+                "type": "equal_to",
+                "arguments": [
+                  "{{widgets.http_1.parsed.escalateAgent}}"
+                ],
+                "value": "true"
+              }
+            ],
+            "next": "FF42136dd960d199ac475c70cf3a7c7f1d",
+            "uuid": "269e3e0f-470b-49c8-9d2a-a34ca8b55554"
+          }
+        ],
+        "sid": "FF8f3e0dd51577c85fc05a20594b1d6c6f"
+      }
+    ]
+  }

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "76d9d87e-2791-4cc3-af2e-924cddc6e1bc",
+    "data": [
+      {
+        "text": "Ja",
+        "alias": "janein",
+        "meta": "@janein",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "ef05f114-aa5d-42db-9d9c-3e0c15c86d2d",
+    "data": [
+      {
+        "text": "Nein",
+        "alias": "janein",
+        "meta": "@janein",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 1,
+    "updated": 0
+  }
+]
