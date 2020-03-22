@@ -11,4 +11,4 @@ This repository is part of a submission to the [WirVsVirus Hackathon](https://wi
 
 ## Setup
 - Create an account for [Dialogflow](https://dialogflow.com) and import files from the folder `/google-dialogflow`
-- Create an account for [[Twilio](https://twilio.com), create a Flex instance and import files from the folder `/twilio-studio` in Studio
+- Create an account for [Twilio](https://twilio.com), create a Flex instance and import files from the folder `/twilio-studio` in Studio
