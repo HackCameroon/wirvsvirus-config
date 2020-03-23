@@ -1,328 +1,328 @@
 {
-    "description": "VoiceBot_Corona",
-    "states": [
-      {
-        "name": "Trigger",
-        "type": "InitialState",
-        "properties": {
-          "offset": {
-            "x": -30,
-            "y": -430
-          },
-          "flow_url": "https://webhooks.twilio.com/v1/Accounts/AC3091cc52064ab99745422b17fc69d707/Flows/FW06b30259ee4c9076cd45d7e7620becd1"
+  "description": "VoiceBot_Corona",
+  "states": [
+    {
+      "name": "Trigger",
+      "type": "InitialState",
+      "properties": {
+        "offset": {
+          "x": -30,
+          "y": -430
         },
-        "transitions": [
-          {
-            "event": "incomingMessage",
-            "conditions": [],
-            "next": null,
-            "uuid": "d023c1f5-ee7d-40ab-aff1-21f9a8497397"
-          },
-          {
-            "event": "incomingCall",
-            "conditions": [],
-            "next": "FF3bb2b4336bdd7ab15a5fb578ea5b037d",
-            "uuid": "8f245f71-9012-4444-a837-289e38dc1d4f"
-          },
-          {
-            "event": "incomingRequest",
-            "conditions": [],
-            "next": null,
-            "uuid": "bb20a141-be6d-4099-b20c-eddc535bc054"
-          }
-        ],
-        "sid": "FF1d4840ecfac4da47ca431ed4bfc9aed4"
+        "flow_url": "https://webhooks.twilio.com/v1/Accounts/AC3091cc52064ab99745422b17fc69d707/Flows/FW06b30259ee4c9076cd45d7e7620becd1"
       },
-      {
-        "name": "SendCallToAgent",
-        "type": "SendToFlex",
-        "properties": {
-          "offset": {
-            "x": 620,
-            "y": 1980
-          },
-          "workflow": "WW93afabb5b071578094989453eb40b476",
-          "channel": "TCaf1b530a445b8a65bbc61e8b33840376",
-          "attributes": "{ \"type\": \"inbound\", \"name\": \"{{trigger.call.From}}\" , \"skill\": \"Nespresso\", \"sfdcObjectId\":\"{{widgets.Getsfdcinfo.parsed.contactId}} \", \"session\":\"{{trigger.call.CallSid}}\"}",
-          "timeout": null,
-          "priority": null,
-          "waitUrl": null,
-          "waitUrlMethod": null
+      "transitions": [
+        {
+          "event": "incomingMessage",
+          "conditions": [],
+          "next": null,
+          "uuid": "4afe0142-f096-4eca-a401-3faa6ed69785"
         },
-        "transitions": [
-          {
-            "event": "callComplete",
-            "conditions": [],
-            "next": null,
-            "uuid": "b91541d5-9c6b-495a-81a2-33afab058efb"
-          },
-          {
-            "event": "failedToEnqueue",
-            "conditions": [],
-            "next": null,
-            "uuid": "6805a64c-856f-4dfc-9c20-d0dcb6ecc086"
-          },
-          {
-            "event": "callFailure",
-            "conditions": [],
-            "next": null,
-            "uuid": "78f7f25a-13e3-4394-adb4-4e92608fe340"
-          }
-        ],
-        "sid": "FF57cb7c97290a2d952d8d7b3146e1dc1a"
+        {
+          "event": "incomingCall",
+          "conditions": [],
+          "next": "FF3bb2b4336bdd7ab15a5fb578ea5b037d",
+          "uuid": "d974bb89-0fcc-4ce9-a384-7caba23b8382"
+        },
+        {
+          "event": "incomingRequest",
+          "conditions": [],
+          "next": null,
+          "uuid": "ed228b46-2b05-4fd8-8987-9470249d8503"
+        }
+      ],
+      "sid": "FF1d4840ecfac4da47ca431ed4bfc9aed4"
+    },
+    {
+      "name": "SendCallToAgent",
+      "type": "SendToFlex",
+      "properties": {
+        "offset": {
+          "x": 620,
+          "y": 1980
+        },
+        "workflow": "WW93afabb5b071578094989453eb40b476",
+        "channel": "TCaf1b530a445b8a65bbc61e8b33840376",
+        "attributes": "{ \"type\": \"inbound\", \"name\": \"{{trigger.call.From}}\" , \"skill\": \"Nespresso\", \"sfdcObjectId\":\"{{widgets.Getsfdcinfo.parsed.contactId}} \", \"session\":\"{{trigger.call.CallSid}}\"}",
+        "timeout": null,
+        "priority": null,
+        "waitUrl": null,
+        "waitUrlMethod": null
       },
-      {
-        "name": "gather_1",
-        "type": "Gather",
-        "properties": {
-          "offset": {
-            "x": -10,
-            "y": 370
-          },
-          "timeout": 10,
-          "finish_on_key": "#",
-          "stop_gather": true,
-          "number_of_digits": null,
-          "save_response_as": null,
-          "say": null,
-          "play": null,
-          "voice": "Polly.Marlene",
-          "language": "de-DE",
-          "loop": 1,
-          "hints": null,
-          "gather_language": "de-DE",
-          "speech_timeout": "1",
-          "speech_model": "phone_call",
-          "profanity_filter": "true"
+      "transitions": [
+        {
+          "event": "callComplete",
+          "conditions": [],
+          "next": null,
+          "uuid": "6a6ebc0e-8b89-4f69-b165-a02bc506d16c"
         },
-        "transitions": [
-          {
-            "event": "keypress",
-            "conditions": [],
-            "next": null,
-            "uuid": "b5f611a5-2a9c-4061-b042-b635bf5ad699"
-          },
-          {
-            "event": "speech",
-            "conditions": [],
-            "next": "FFa9bb27ebc408bb646a59d41929235bb8",
-            "uuid": "bdd851dc-9a10-44b9-988e-dd4549249fc4"
-          },
-          {
-            "event": "timeout",
-            "conditions": [],
-            "next": "FFa229e10cf5090cc2e0a0dfe67555499d",
-            "uuid": "9794e0ff-7ab4-4db9-ace9-f19084f6775a"
-          }
-        ],
-        "sid": "FFdee245dba72aee2c7c863e6147a41828"
+        {
+          "event": "failedToEnqueue",
+          "conditions": [],
+          "next": null,
+          "uuid": "187bdfe5-d733-437b-a095-599056177374"
+        },
+        {
+          "event": "callFailure",
+          "conditions": [],
+          "next": null,
+          "uuid": "0c076758-65c1-49d7-9f21-ce0cc394c7bd"
+        }
+      ],
+      "sid": "FF57cb7c97290a2d952d8d7b3146e1dc1a"
+    },
+    {
+      "name": "gather_1",
+      "type": "Gather",
+      "properties": {
+        "offset": {
+          "x": -10,
+          "y": 370
+        },
+        "timeout": 10,
+        "finish_on_key": "#",
+        "stop_gather": true,
+        "number_of_digits": null,
+        "save_response_as": null,
+        "say": null,
+        "play": null,
+        "voice": "Polly.Marlene",
+        "language": "de-DE",
+        "loop": 1,
+        "hints": null,
+        "gather_language": "de-DE",
+        "speech_timeout": "1",
+        "speech_model": "phone_call",
+        "profanity_filter": "true"
       },
-      {
-        "name": "http_1",
-        "type": "Webhook",
-        "properties": {
-          "offset": {
-            "x": 30,
-            "y": 680
-          },
-          "method": "POST",
-          "url": "https://twlo-andrej-4k.eu.ngrok.io/bot/getAnswer",
-          "body": "{\"question\":\"{{widgets.gather_1.SpeechResult}} \", \"sessionSid\":\" {{trigger.call.CallSid}} \"}",
-          "timeout": null,
-          "parameters": null,
-          "save_response_as": null,
-          "content_type": "application/json;charset=utf-8"
+      "transitions": [
+        {
+          "event": "keypress",
+          "conditions": [],
+          "next": null,
+          "uuid": "cf99d94f-6517-4130-8a2e-12f80abd128c"
         },
-        "transitions": [
-          {
-            "event": "success",
-            "conditions": [],
-            "next": "FF13d433c54355bcb6a0bab7524fdd44db",
-            "uuid": "ee85e381-5233-4584-a4ca-9c434be833bd"
-          },
-          {
-            "event": "failed",
-            "conditions": [],
-            "next": null,
-            "uuid": "2eb8d83d-9877-49d2-9895-fd7f00f8d347"
-          }
-        ],
-        "sid": "FFa9bb27ebc408bb646a59d41929235bb8"
+        {
+          "event": "speech",
+          "conditions": [],
+          "next": "FFa9bb27ebc408bb646a59d41929235bb8",
+          "uuid": "d92a6a58-cbb0-460a-9ac6-8a9cde3ef9a3"
+        },
+        {
+          "event": "timeout",
+          "conditions": [],
+          "next": "FFa229e10cf5090cc2e0a0dfe67555499d",
+          "uuid": "5bd1abb4-f289-412a-81d5-4cf8cc34239b"
+        }
+      ],
+      "sid": "FFdee245dba72aee2c7c863e6147a41828"
+    },
+    {
+      "name": "http_1",
+      "type": "Webhook",
+      "properties": {
+        "offset": {
+          "x": 30,
+          "y": 680
+        },
+        "method": "POST",
+        "url": "https://twlo-andrej-4k.eu.ngrok.io/bot/getAnswer",
+        "body": "{\"question\":\"{{widgets.gather_1.SpeechResult}} \", \"sessionSid\":\" {{trigger.call.CallSid}} \"}",
+        "timeout": null,
+        "parameters": null,
+        "save_response_as": null,
+        "content_type": "application/json;charset=utf-8"
       },
-      {
-        "name": "say_play_1",
-        "type": "SayPlay",
-        "properties": {
-          "offset": {
-            "x": 10,
-            "y": 1010
-          },
-          "say": "{{widgets.http_1.parsed.response}}",
-          "play": null,
-          "voice": "Polly.Vicki",
-          "language": "de-DE",
-          "loop": 1,
-          "digits": null
+      "transitions": [
+        {
+          "event": "success",
+          "conditions": [],
+          "next": "FF13d433c54355bcb6a0bab7524fdd44db",
+          "uuid": "dc536556-1977-4053-818f-5951e3386dbf"
         },
-        "transitions": [
-          {
-            "event": "audioComplete",
-            "conditions": [],
-            "next": "FFefcc208ab2a66a483f974697d109ceae",
-            "uuid": "5957ddae-9b6c-4786-b9b6-ca79794ff5ad"
-          }
-        ],
-        "sid": "FF13d433c54355bcb6a0bab7524fdd44db"
+        {
+          "event": "failed",
+          "conditions": [],
+          "next": null,
+          "uuid": "5e0070eb-fb41-49e4-9f08-7b548b445d00"
+        }
+      ],
+      "sid": "FFa9bb27ebc408bb646a59d41929235bb8"
+    },
+    {
+      "name": "say_play_1",
+      "type": "SayPlay",
+      "properties": {
+        "offset": {
+          "x": 10,
+          "y": 1010
+        },
+        "say": "{{widgets.http_1.parsed.response}}",
+        "play": null,
+        "voice": "Polly.Vicki",
+        "language": "de-DE",
+        "loop": 1,
+        "digits": null
       },
-      {
-        "name": "split_1",
-        "type": "Branch",
-        "properties": {
-          "offset": {
-            "x": -520,
-            "y": 1410
-          },
-          "input": "{{widgets.http_1.parsed.endConversation}}"
+      "transitions": [
+        {
+          "event": "audioComplete",
+          "conditions": [],
+          "next": "FFefcc208ab2a66a483f974697d109ceae",
+          "uuid": "a8489d2b-004b-40f4-b9b5-d01c4fe8e779"
+        }
+      ],
+      "sid": "FF13d433c54355bcb6a0bab7524fdd44db"
+    },
+    {
+      "name": "split_1",
+      "type": "Branch",
+      "properties": {
+        "offset": {
+          "x": -520,
+          "y": 1410
         },
-        "transitions": [
-          {
-            "event": "noMatch",
-            "conditions": [],
-            "next": "FFdee245dba72aee2c7c863e6147a41828",
-            "uuid": "bda4edec-0275-43c7-9755-3497bbd23a54"
-          },
-          {
-            "event": "match",
-            "conditions": [
-              {
-                "friendly_name": "If value equal_to false",
-                "type": "equal_to",
-                "arguments": [
-                  "{{widgets.http_1.parsed.endConversation}}"
-                ],
-                "value": "false"
-              }
-            ],
-            "next": "FFdee245dba72aee2c7c863e6147a41828",
-            "uuid": "3bc79af6-24a7-4080-ab2e-82d7486a3e51"
-          },
-          {
-            "event": "match",
-            "conditions": [
-              {
-                "friendly_name": "If value equal_to true",
-                "type": "equal_to",
-                "arguments": [
-                  "{{widgets.http_1.parsed.endConversation}}"
-                ],
-                "value": "true"
-              }
-            ],
-            "next": "FFefcc208ab2a66a483f974697d109ceae",
-            "uuid": "ba7b38e1-3029-409a-abdc-c945cbc1ec5d"
-          }
-        ],
-        "sid": "FF874d05241ee2c9dba7f632c0ded9fdc5"
+        "input": "{{widgets.http_1.parsed.endConversation}}"
       },
-      {
-        "name": "say_play_2",
-        "type": "SayPlay",
-        "properties": {
-          "offset": {
-            "x": -20,
-            "y": 70
-          },
-          "say": "Willkommen bei der Corona-Hilfe. Ich kann Ihnen bei generellen Informationen zum neuartigen Coronavirus helfen oder Sie beraten, wenn Sie den Verdacht auf eine Infektion haben. Was kann ich für Sie tun?",
-          "play": null,
-          "voice": "Polly.Vicki",
-          "language": "de-DE",
-          "loop": 1,
-          "digits": null
+      "transitions": [
+        {
+          "event": "noMatch",
+          "conditions": [],
+          "next": "FFdee245dba72aee2c7c863e6147a41828",
+          "uuid": "41857ee6-12d5-45aa-ad1b-62c2cc0c4680"
         },
-        "transitions": [
-          {
-            "event": "audioComplete",
-            "conditions": [],
-            "next": "FFdee245dba72aee2c7c863e6147a41828",
-            "uuid": "e23479da-e1f1-4384-88af-7612afacd64e"
-          }
-        ],
-        "sid": "FF3bb2b4336bdd7ab15a5fb578ea5b037d"
+        {
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "If value equal_to false",
+              "type": "equal_to",
+              "arguments": [
+                "{{widgets.http_1.parsed.endConversation}}"
+              ],
+              "value": "false"
+            }
+          ],
+          "next": "FFdee245dba72aee2c7c863e6147a41828",
+          "uuid": "7796e010-8571-472a-9115-bb63bd7a0d5d"
+        },
+        {
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "If value equal_to true",
+              "type": "equal_to",
+              "arguments": [
+                "{{widgets.http_1.parsed.endConversation}}"
+              ],
+              "value": "true"
+            }
+          ],
+          "next": "FFefcc208ab2a66a483f974697d109ceae",
+          "uuid": "b2bc8338-f4f5-48b7-bdd8-f29c8409884e"
+        }
+      ],
+      "sid": "FF874d05241ee2c9dba7f632c0ded9fdc5"
+    },
+    {
+      "name": "say_play_2",
+      "type": "SayPlay",
+      "properties": {
+        "offset": {
+          "x": -20,
+          "y": 70
+        },
+        "say": "Willkommen bei der Corona-Hilfe. Ich kann Ihnen bei generellen Informationen zum neuartigen Coronavirus helfen oder Sie beraten, wenn Sie den Verdacht auf eine Infektion haben. Was kann ich für Sie tun?",
+        "play": null,
+        "voice": "Polly.Vicki",
+        "language": "de-DE",
+        "loop": 1,
+        "digits": null
       },
-      {
-        "name": "Copy_of_split_1",
-        "type": "Branch",
-        "properties": {
-          "offset": {
-            "x": 850,
-            "y": 920
-          },
-          "input": "{{widgets.http_1.parsed.escalateAgent}}"
+      "transitions": [
+        {
+          "event": "audioComplete",
+          "conditions": [],
+          "next": "FFdee245dba72aee2c7c863e6147a41828",
+          "uuid": "a3553bd9-e555-41f9-a3b5-d8542b87954e"
+        }
+      ],
+      "sid": "FF3bb2b4336bdd7ab15a5fb578ea5b037d"
+    },
+    {
+      "name": "Copy_of_split_1",
+      "type": "Branch",
+      "properties": {
+        "offset": {
+          "x": 850,
+          "y": 920
         },
-        "transitions": [
-          {
-            "event": "noMatch",
-            "conditions": [],
-            "next": "FFdee245dba72aee2c7c863e6147a41828",
-            "uuid": "1f54c49d-7415-4db8-bc2d-311ae96faae7"
-          },
-          {
-            "event": "match",
-            "conditions": [
-              {
-                "friendly_name": "If value equal_to false",
-                "type": "equal_to",
-                "arguments": [
-                  "{{widgets.http_1.parsed.escalateAgent}}"
-                ],
-                "value": "false"
-              }
-            ],
-            "next": "FFdee245dba72aee2c7c863e6147a41828",
-            "uuid": "78c35f93-67e2-44fb-a244-97cc1112284e"
-          },
-          {
-            "event": "match",
-            "conditions": [
-              {
-                "friendly_name": "If value equal_to true",
-                "type": "equal_to",
-                "arguments": [
-                  "{{widgets.http_1.parsed.escalateAgent}}"
-                ],
-                "value": "true"
-              }
-            ],
-            "next": "FF57cb7c97290a2d952d8d7b3146e1dc1a",
-            "uuid": "a7043c07-d4c3-4113-95c9-6e56e2c59b01"
-          }
-        ],
-        "sid": "FFefcc208ab2a66a483f974697d109ceae"
+        "input": "{{widgets.http_1.parsed.escalateAgent}}"
       },
-      {
-        "name": "say_play_3",
-        "type": "SayPlay",
-        "properties": {
-          "offset": {
-            "x": 850,
-            "y": 480
-          },
-          "say": "Ich habe Sie nicht verstanden, können Sie das noch einmal wiederholen?",
-          "play": null,
-          "voice": "Polly.Marlene",
-          "language": "de-DE",
-          "loop": 1,
-          "digits": null
+      "transitions": [
+        {
+          "event": "noMatch",
+          "conditions": [],
+          "next": "FFdee245dba72aee2c7c863e6147a41828",
+          "uuid": "fcf82d9c-3694-427f-afac-2e31920890fc"
         },
-        "transitions": [
-          {
-            "event": "audioComplete",
-            "conditions": [],
-            "next": "FFdee245dba72aee2c7c863e6147a41828",
-            "uuid": "4331d803-25bc-40a4-8039-7f8a25e46c27"
-          }
-        ],
-        "sid": "FFa229e10cf5090cc2e0a0dfe67555499d"
-      }
-    ]
-  }
+        {
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "If value equal_to false",
+              "type": "equal_to",
+              "arguments": [
+                "{{widgets.http_1.parsed.escalateAgent}}"
+              ],
+              "value": "false"
+            }
+          ],
+          "next": "FFdee245dba72aee2c7c863e6147a41828",
+          "uuid": "8a68673a-b5d7-4545-a66e-2497a8459927"
+        },
+        {
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "If value equal_to true",
+              "type": "equal_to",
+              "arguments": [
+                "{{widgets.http_1.parsed.escalateAgent}}"
+              ],
+              "value": "true"
+            }
+          ],
+          "next": "FF57cb7c97290a2d952d8d7b3146e1dc1a",
+          "uuid": "a3b96bfe-3d0b-4e5e-90d2-d6353629990c"
+        }
+      ],
+      "sid": "FFefcc208ab2a66a483f974697d109ceae"
+    },
+    {
+      "name": "say_play_3",
+      "type": "SayPlay",
+      "properties": {
+        "offset": {
+          "x": 850,
+          "y": 480
+        },
+        "say": "Ich habe Sie nicht verstanden, können Sie das noch einmal wiederholen?",
+        "play": null,
+        "voice": "Polly.Marlene",
+        "language": "de-DE",
+        "loop": 1,
+        "digits": null
+      },
+      "transitions": [
+        {
+          "event": "audioComplete",
+          "conditions": [],
+          "next": "FFdee245dba72aee2c7c863e6147a41828",
+          "uuid": "3d7236ae-92bc-4964-99b1-edfadf8db53c"
+        }
+      ],
+      "sid": "FFa229e10cf5090cc2e0a0dfe67555499d"
+    }
+  ]
+}
