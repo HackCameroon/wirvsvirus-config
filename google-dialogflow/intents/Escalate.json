@@ -1,20 +1,19 @@
 {
-  "id": "0a66b53c-590b-48e9-ae69-aa55513523b3",
-  "name": "Default Welcome Intent",
+  "id": "9f7c2f33-5e85-4799-ad10-d14c65d9affc",
+  "name": "Escalate",
   "auto": true,
   "contexts": [],
   "responses": [
     {
       "resetContexts": false,
-      "action": "input.welcome",
       "affectedContexts": [],
       "parameters": [
         {
-          "id": "fd941987-1a00-4b9c-8ba2-8cfce4ec3111",
+          "id": "6e8ef320-a33f-4505-bb20-e275df7b7acf",
           "required": false,
-          "dataType": "@sys.person",
-          "name": "person",
-          "value": "$person",
+          "dataType": "@sys.number",
+          "name": "number",
+          "value": "$number",
           "promptMessages": [],
           "noMatchPromptMessages": [],
           "noInputPromptMessages": [],
@@ -27,7 +26,7 @@
           "type": 0,
           "lang": "de",
           "condition": "",
-          "speech": "Willkommen bei der Corona-Hilfe. Ich kann Ihnen bei generellen Informationen zum neuartigen Coronavirus helfen oder Sie beraten, wenn Sie den Verdacht auf eine Infektion haben. Was kann ich für Sie tun?"
+          "speech": []
         }
       ],
       "defaultResponsePlatforms": {},
@@ -38,11 +37,7 @@
   "webhookUsed": false,
   "webhookForSlotFilling": false,
   "fallbackIntent": false,
-  "events": [
-    {
-      "name": "WELCOME"
-    }
-  ],
+  "events": [],
   "conditionalResponses": [],
   "condition": "",
   "conditionalFollowupEvents": []
